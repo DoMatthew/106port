@@ -1,0 +1,39 @@
+body {
+  /* Set line height to 1.5 times the font size
+	   and use the OS’s UI font as the website font
+	 */
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: auto;
+  padding: 1em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
+
+form {
+  display: grid;
+  gap: 1em;
+}
+
+label {
+  display: grid;
+  gap: 0.25em;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
