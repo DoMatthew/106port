@@ -1,2 +1,2 @@
 # 106port
-DSC106 Lab 1
+DSC106 Portfolio Lab
