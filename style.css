@@ -1,7 +1,9 @@
 :root {
+  color-scheme: light dark;
   --color-accent: oklch(65% 50% 0);
-  --color-border: oklch(80% 3% 200);
-  --color-muted: oklch(45% 3% 200);
+  --color-border: oklch(50% 10% 200 / 40%);
+  /* Secondary text that adapts to light and dark mode */
+  --color-muted: color-mix(in oklch, canvastext 65%, canvas);
 }
 
 html {
@@ -13,6 +15,24 @@ body {
   max-width: 100ch;
   margin-inline: auto;
   padding: 1em;
+  /* Leave room for the theme switcher in the top right corner */
+  padding-top: 2.5rem;
+}
+
+input,
+textarea,
+button,
+select {
+  font: inherit;
+}
+
+/* Dark mode switcher */
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+  font-family: inherit;
 }
 
 img {
@@ -37,9 +57,12 @@ h1 {
 
 /* Navigation */
 nav {
+  --border-color: oklch(50% 10% 200 / 40%);
+
   display: flex;
   margin-bottom: 1em;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid;
+  border-bottom-color: var(--border-color);
 
   ul,
   li {
@@ -54,14 +77,14 @@ nav {
     padding: 0.5em;
 
     &.current {
-      border-bottom: 0.4em solid var(--color-border);
+      border-bottom: 0.4em solid var(--border-color);
       padding-bottom: 0.1em;
     }
 
     &:hover {
       border-bottom: 0.4em solid var(--color-accent);
       padding-bottom: 0.1em;
-      background-color: oklch(from var(--color-accent) 92% 8% h);
+      background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
     }
   }
 }
@@ -82,7 +105,6 @@ form {
   input,
   textarea,
   button {
-    font: inherit;
     box-sizing: border-box;
   }
 
