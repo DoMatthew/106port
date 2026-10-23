@@ -203,3 +203,25 @@ form {
     color: var(--color-accent);
   }
 }
+
+/* GitHub profile stats (home page) */
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  margin: 0;
+
+  dt {
+    grid-row: 1;
+    font-size: 80%;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  dd {
+    grid-row: 2;
+    margin: 0;
+    font-size: 200%;
+    font-weight: bold;
+  }
+}
