@@ -90,10 +90,8 @@ form?.addEventListener('submit', function (event) {
   location.href = url;
 });
 
-// Lab 4: load JSON data from a file or an API
 export async function fetchJSON(url) {
   try {
-    // Fetch the JSON file from the given URL
     const response = await fetch(url);
 
     if (!response.ok) {
@@ -107,7 +105,6 @@ export async function fetchJSON(url) {
   }
 }
 
-// Lab 4: render a list of projects into a container element
 export function renderProjects(projects, containerElement, headingLevel = 'h2') {
   if (!containerElement) {
     console.error('renderProjects: container element not found');
@@ -120,7 +117,6 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     headingLevel = 'h2';
   }
 
-  // Clear existing content so projects aren't duplicated on re-render
   containerElement.innerHTML = '';
 
   if (!Array.isArray(projects) || projects.length === 0) {
@@ -133,17 +129,20 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     const title = project.title ?? 'Untitled project';
     const image = project.image ?? 'https://vis-society.github.io/labs/2/images/empty.svg';
 
+
     article.innerHTML = `
       <${headingLevel}>${title}</${headingLevel}>
       <img src="${image}" alt="${title}">
-      <p>${project.description ?? ''}</p>
+      <div>
+        <p>${project.description ?? ''}</p>
+        ${project.year ? `<p class="project-year">c. ${project.year}</p>` : ''}
+      </div>
     `;
 
     containerElement.appendChild(article);
   }
 }
 
-// Lab 4: load public profile data from the GitHub API
 export async function fetchGitHubData(username) {
   return fetchJSON(`https://api.github.com/users/${username}`);
 }
