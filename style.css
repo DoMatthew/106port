@@ -2,7 +2,6 @@
   color-scheme: light dark;
   --color-accent: oklch(65% 50% 0);
   --color-border: oklch(50% 10% 200 / 40%);
-  /* Secondary text that adapts to light and dark mode */
   --color-muted: color-mix(in oklch, canvastext 65%, canvas);
 }
 
@@ -15,7 +14,6 @@ body {
   max-width: 100ch;
   margin-inline: auto;
   padding: 1em;
-  /* Leave room for the theme switcher in the top right corner */
   padding-top: 2.5rem;
 }
 
@@ -306,4 +304,104 @@ form {
   box-sizing: border-box;
   padding: 0.5em;
   margin-bottom: 2em;
+}
+
+dl.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+  gap: 1em;
+  margin: 0;
+
+  dt {
+    font-size: 80%;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  dd {
+    margin: 0;
+    font-size: 150%;
+    font-weight: bold;
+  }
+}
+
+#chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.gridlines {
+  .tick line {
+    stroke: currentColor;
+    opacity: 0.1;
+  }
+
+  .domain {
+    display: none;
+  }
+}
+
+#chart circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+
+  &:hover {
+    transform: scale(1.5);
+  }
+}
+
+circle.selected {
+  fill: #ff6b6b;
+}
+
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+#chart .selection {
+  fill-opacity: 0.1;
+  stroke: canvastext;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
+
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25em 1em;
+  margin: 0;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+
+  dt {
+    grid-column: 1;
+    color: var(--color-muted);
+  }
+
+  dd {
+    grid-column: 2;
+    margin: 0;
+  }
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 10;
+  padding: 0.75em 1em;
+  border-radius: 0.5em;
+  background-color: color-mix(in oklch, canvas 85%, transparent);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0.5em 1.5em oklch(0% 0 0 / 20%);
 }
