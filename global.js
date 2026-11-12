@@ -128,7 +128,8 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   for (let project of projects) {
     const article = document.createElement('article');
     const title = project.title ?? 'Untitled project';
-    const image = project.image ?? 'https://vis-society.github.io/labs/2/images/empty.svg';
+    let image = project.image ?? 'https://vis-society.github.io/labs/2/images/empty.svg';
+    image = !image.startsWith('http') ? BASE_PATH + image : image;
 
 
     article.innerHTML = `

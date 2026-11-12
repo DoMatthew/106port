@@ -2,7 +2,7 @@
   {
     "title": "Bikewatching",
     "year": "2026",
-    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "image": "images/bikewatching.jpg",
     "description": "An interactive Mapbox + D3 map of BlueBikes traffic in Boston and Cambridge",
     "url": "https://domatthew.github.io/bike-station/"
   },
