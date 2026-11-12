@@ -137,6 +137,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
       <div>
         <p>${project.description ?? ''}</p>
         ${project.year ? `<p class="project-year">c. ${project.year}</p>` : ''}
+        ${project.url ? `<p><a class="project-link" href="${project.url}" target="_blank">View project →</a></p>` : ''}
       </div>
     `;
 
